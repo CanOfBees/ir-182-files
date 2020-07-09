@@ -1,0 +1,21 @@
+PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
+PREFIX fedora-model: <info:fedora/fedora-system:def/model#>
+PREFIX fedora-rels-ext: <info:fedora/fedora-system:def/relations-external#>
+PREFIX fedora-view: <info:fedora/fedora-system:def/view#>
+PREFIX islandora-scholar: <info:islandora/islandora-system:def/scholar#>
+PREFIX isl-rels-ext: <http://islandora.ca/ontology/relsext#>
+PREFIX dc: <http://purl.org/dc/elements/1.1/>
+SELECT ?pids
+FROM <#ri>
+WHERE {
+  { ?pids fedora-rels-ext:isMemberOfCollection <info:fedora/utk.ir:td> ;
+          fedora-model:state fedora-model:Inactive ;
+          dc:date "2019-08" . }
+  UNION
+  { ?pids fedora-rels-ext:isMemberOfCollection <info:fedora/utk.ir:td> ;
+          fedora-model:state fedora-model:Deleted ;
+          dc:date "2019-08" . }
+}
+
